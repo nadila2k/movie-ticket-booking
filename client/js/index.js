@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", async function () {
   console.log("helt ok!");
   getMovie();
@@ -87,11 +88,12 @@ async function getMovie() {
                     <li class="list-inline-item me-0">
                       <div class="chip me-0">
                       <input type="radio" id="time17" name="time" value="17.00" />
-                      <label for="time17">17.00AM</label>
+                      <label for="time17">${el.id}</label>
                       </div>
                     </li>
                   </ul>
-                  <a href="booking.php?id=<?php echo $el->id; ?>" class="btn btn-info p-md-1 mb-0">Button</a>
+                  <a href="booking.php?id=${el.id}"  class="btn btn-info p-md-1 mb-0"  >Button</a>
+
 
                   </form>
                 </div>
@@ -103,3 +105,5 @@ async function getMovie() {
   carouselBody.innerHTML = htmlStr;
   nowShowing.innerHTML = nowShowingHtml;
 }
+
+
