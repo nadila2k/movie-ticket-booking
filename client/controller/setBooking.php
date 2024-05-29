@@ -1,43 +1,44 @@
 <?php include "../../config/db.php"; ?>
 
-<?PHP
+<?php
 
-    $aResponse = [
-        'status' => false,
-        'message' => 'Data not saved!',
-        'data' => []
-    ];
+$aResponse = [
+    'status' => false,
+    'message' => 'Data not saved!',
+    'data' => []
+];
 
-    if (isset($_POST)) {
-        $data = file_get_contents("php://input");
-        $userData = json_decode($data);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = file_get_contents("php://input");
+    $userData = json_decode($data, true);
 
-        $id =  $userData->id;
-        
-        
-        
+    if (isset($userData['seatNo']) && isset($userData['mId'])) {
+        $seatArray = $userData['seatNo'];
+        $movie_id = $userData['mId'];
+        $seat_no = implode(",", $seatArray);
 
-        $sql = "";
-        $res = mysqli_query($conn,$sql);
-        if ($res==true) {
+        $sql = "INSERT INTO booking_tbl SET filmID='$movie_id', seatNum='$seat_no'";
+        $res = mysqli_query($conn, $sql);
 
+        if ($res) {
             $aResponse = [
                 'status' => true,
-                'message' => 'User Delete'
-                
+                'message' => 'Booking saved successfully'
             ];
-    
         } else {
             $aResponse = [
                 'status' => false,
-                'message' => 'User not Delete'
-                
+                'message' => 'Failed to save booking'
             ];
         }
-    
-        header('Content-Type: application/json');
-        echo json_encode($aResponse);
+    } else {
+        $aResponse = [
+            'status' => false,
+            'message' => 'Invalid input data'
+        ];
     }
 
-   
+    header('Content-Type: application/json');
+    echo json_encode($aResponse);
+}
 ?>

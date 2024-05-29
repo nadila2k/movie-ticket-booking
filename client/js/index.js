@@ -21,9 +21,9 @@ async function getMovie() {
     if (el.available === "No") {
       htmlStr += `<div class="carousel-item active" data-bs-interval="10000">
             <img src="../../uploads/${el.image}" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>${el.name}</h5>
-                <p>${el.description}.</p>
+            <div class="carousel-caption d-none d-md-block text-white">
+                <h5  style="font-size: 40px;">${el.name}</h5>
+                <p style="font-size: 20px;">${el.description}.</p>
             </div>
         </div>`;
     } else {

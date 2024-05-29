@@ -18,14 +18,19 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
+  <div class="container-fluid mt-2">
+    <div class="text-center text-white p-3" style="font-size: 40px;">
+        NOW SHOWING
+    </div>
+</div>
   <div class="container">
     <div class="row" id="nowShowing">
-      
-     
-    
+
+
+
     </div>
   </div>
+</div>
 </div>
 <script src="js/index.js"></script>
 <?php include "partials/footer.php"; ?>

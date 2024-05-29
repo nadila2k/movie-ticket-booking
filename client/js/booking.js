@@ -57,11 +57,14 @@ document.addEventListener('submit',async function(e){
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    }
+      body: JSON.stringify(data)
+    })
 
     const responseData = await response.json();
-    )
+    if (responseData.status == true) {
+      console.log("booking success");
+    }
+  
 });
 
 
